@@ -18,23 +18,23 @@ class BinarySearchTree {
 
   add(data) {
     const node = this.rootNode;
-    if (node === null) {
+    if (!node) {
       this.rootNode = new Node(data);
       return;
     } else {
       const searchTree = function(node) {
         if (data < node.data) {
-          if (node.left === null) {
+          if (!node.left) {
             node.left = new Node(data);
             return;
-          } else if (node.left !== null) {
+          } else if (node.left) {
             return searchTree(node.left);
           }
         } else if (data > node.data) {
-          if (node.right === null) {
+          if (!node.right) {
             node.right = new Node(data);
             return;
-          } else if (node.right !== null) {
+          } else if (node.right) {
             return searchTree(node.right);
           }
         } else {
@@ -68,7 +68,7 @@ class BinarySearchTree {
       } else {
         currentNode = currentNode.right;
       }
-      if (currentNode === null) {
+      if (!currentNode) {
         return null;
       }
     }
@@ -77,21 +77,21 @@ class BinarySearchTree {
 
   remove(data) {
     const removeNode = function(node, data) {
-      if (node === null) {
+      if (!node) {
         return null;
       }
       if (data === node.data) {
-        if (node.left === null && node.right === null) {
+        if (!node.left && !node.right) {
           return null;
         }
-        if (node.left === null) {
+        if (!node.left) {
           return node.right;
         }
-        if (node.right === null) {
+        if (!node.right) {
           return node.left;
         }
         let temp = node.right;
-        while (temp.left !== null) {
+        while (temp.left) {
           temp = temp.left;
         }
         node.data = temp.data;
@@ -110,7 +110,7 @@ class BinarySearchTree {
 
   min() {
     let currentNode = this.rootNode;
-    while (currentNode.left !== null) {
+    while (currentNode.left) {
       currentNode = currentNode.left;
     }
     return currentNode.data;
@@ -118,7 +118,7 @@ class BinarySearchTree {
 
   max() {
     let currentNode = this.rootNode;
-    while (currentNode.right !== null) {
+    while (currentNode.right) {
       currentNode = currentNode.right;
     }
     return currentNode.data;
